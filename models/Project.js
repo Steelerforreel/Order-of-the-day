@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Tasks extends Model {}
 
-Project.init(
+Tasks.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -23,8 +23,12 @@ Project.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    needed_funding: {
-      type: DataTypes.FLOAT,
+    starting_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    ending_date: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
     user_id: {
@@ -44,4 +48,4 @@ Project.init(
   }
 );
 
-module.exports = Project;
+module.exports = Tasks;
