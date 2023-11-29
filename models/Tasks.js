@@ -18,17 +18,17 @@ Tasks.init(
     description: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
+    time_created: {
+      type: DataTypes.TIME,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    starting_date: {
-      type: DataTypes.DATE,
+    starting_time: {
+      type: DataTypes.TIME,  //not sure if TIME datatype exists, I know DATE exists
       allowNull: false,
     },
-    ending_date: {
-      type: DataTypes.DATE,
+    ending_time: {
+      type: DataTypes.TIME,
       allowNull: false,
     },
     user_id: {
