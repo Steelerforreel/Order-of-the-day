@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { Task, User } = require("../models");
+const { Tasks, User } = require("../models");
 const withAuth = require("../utils/auth");
-const taskRoutes = require("./task-routes"); // Import task routes
+const taskRoutes = require("./api/task-routes"); // Import task routes
 
 // Home route
 router.get("/", (req, res) => {
@@ -57,7 +57,7 @@ router.post("/signup", async (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Retrieve tasks associated with the logged-in user
-    const dbTaskData = await Task.findAll({
+    const dbTaskData = await Tasks.findAll({
       where: {
         user_id: req.session.user_id,
       },

@@ -11,26 +11,26 @@ Tasks.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
     },
-    time_created: {
-      type: DataTypes.TIME,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    starting_time: {
-      type: DataTypes.TIME,  //not sure if TIME datatype exists, I know DATE exists
-      allowNull: false,
-    },
-    ending_time: {
-      type: DataTypes.TIME,
-      allowNull: false,
-    },
+    // time_created: {
+    //   type: DataTypes.TIME,
+    //   allowNull: false,
+    //   defaultValue: DataTypes.NOW,
+    // },
+    // starting_time: {
+    //   type: DataTypes.TIME,  //not sure if TIME datatype exists, I know DATE exists
+    //   allowNull: false,
+    // },
+    // ending_time: {
+    //   type: DataTypes.TIME,
+    //   allowNull: false,
+    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -44,7 +44,7 @@ Tasks.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'tasks',
   }
 );
 
