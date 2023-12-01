@@ -6,10 +6,10 @@ const taskRoutes = require("./api/task-routes"); // Import task routes
 // Home route
 router.get("/", (req, res) => {
   if (req.session.logged_in) {
-    return res.redirect("/dashboard");
+    return res.redirect("/profile");
   }
 
-  res.render("login-signup");
+  res.render("homepage");
 });
 
 // Login route

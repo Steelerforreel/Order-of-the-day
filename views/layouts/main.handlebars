@@ -15,8 +15,10 @@
       </h1>
       <nav>
         {{#if logged_in}}
+        <a href="/task">My Tasks</a> |
         <button class="" id="logout">Logout</button>
-        {{ ELSE }}
+        {{else}}
+        {{ body }}
         <a href="/login">Login</a>
         {{/if}}
       </nav>

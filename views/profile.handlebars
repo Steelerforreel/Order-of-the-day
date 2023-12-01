@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Task:</h3>
+
+    <form class="form new-Task-form">
+      <div class="form-group">
+        <label for="Task-name">Task Name:</label>
+        <input class="form-input" type="text" id="Task-name" name="Task-name" />
+      </div>
+      <div class="form-group">
+        <label for="Task-Description">Description:</label>
+        <input class="form-input" type="text" id="Task-Description" name="Task-Description" />
+      </div>
+      {{!-- <div class="form-group">
+        <label for="Task-desc">Budget:</label>
+        <textarea class="form-input" type="number" id="Task-desc" name="Task-desc"></textarea>
+      </div> --}}
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if Tasks.length}}
+  <div class="col-md-6 Task-list">
+    <h3>Current Tasks:</h3>
+
+    {{#each Tasks as |Task|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/Task/{{Task.id}}">{{Task.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{Task.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="../public/js/profile.js"></script>
