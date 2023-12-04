@@ -1,14 +1,30 @@
 [
   {
-    "title": "Buy Groceries",
-    "description": "Grocery List - Onions, tomato, Beans."
+    "title": "Complete Project Proposal",
+    "description": "Write and finalize the project proposal document.",
+    "starting_time": "09:00:00",
+    "ending_time": "11:00:00",
+    "user_id": 1
   },
   {
-    "title": "Write Journal",
-    "description": "Morning Journal before heading out."
+    "title": "Meeting with Client",
+    "description": "Discuss project requirements and expectations with the client.",
+    "starting_time": "14:00:00",
+    "ending_time": "16:00:00",
+    "user_id": 2
   },
   {
-    "title": "Meeting a Dentist",
-    "description": "Meet Dr.Wang on thursday 10 am for tooth extraction."
+    "title": "Code Review",
+    "description": "Review and provide feedback on the team's codebase.",
+    "starting_time": "10:30:00",
+    "ending_time": "12:30:00",
+    "user_id": 1
+  },
+  {
+    "title": "Prepare Presentation",
+    "description": "Prepare slides for the upcoming project presentation.",
+    "starting_time": "13:30:00",
+    "ending_time": "15:30:00",
+    "user_id": 2
   }
 ]
