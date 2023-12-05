@@ -9,49 +9,21 @@ router.get("/", (req, res) => {
     return res.redirect("/profile");
   }
 
-  res.render("homepage");
+  res.render("login");
 });
 
-// Login route
-router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
 
-    const user = await User.findOne({ where: { email } });
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  // if (req.session.logged_in) {
+  //   res.redirect('/profile');
+  //   return;
+  // }
 
-    if (!user || !user.checkPassword(password)) {
-      res.status(400).json({ message: "Incorrect email or password" });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = user.id;
-      req.session.logged_in = true;
-      res.json({ user, message: "Logged in successfully" });
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
+  res.render('login');
 });
 
-// Signup route
-router.post("/signup", async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
 
-    const user = await User.create({ username, email, password });
-
-    req.session.save(() => {
-      req.session.user_id = user.id;
-      req.session.logged_in = true;
-      res.json({ user, message: "Signed up and logged in successfully" });
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
 
 // Task dashboard route
 router.get("/dashboard", withAuth, async (req, res) => {
@@ -76,6 +48,6 @@ router.get("/dashboard", withAuth, async (req, res) => {
 });
 
 // Use task routes under /dashboard
-router.use("/dashboard", taskRoutes);
+// router.use("/dashboard", taskRoutes);
 
 module.exports = router;
