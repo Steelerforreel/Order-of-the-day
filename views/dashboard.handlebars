@@ -1,0 +1,14 @@
+<!-- Loop over each object in the projects array -->
+{{#each tasks as |task| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      <a href="/tasks/{{task.id}}">{{task.name}}</a>
+    </h2>
+    <p>{{task.description}}</p>
+    <p>{{format_date task.starting_time}}</p>
+    <p>{{format_date task.ending_time}}</p>
+  </div>
+</div>
+{{/each}}

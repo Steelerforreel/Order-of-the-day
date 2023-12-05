@@ -39,7 +39,7 @@ const delButtonHandler = async (event) => {
 
 document
   .querySelector('.new-task-form')
-  .addEventListener('submit', newFormHandler);
+  .addEventListener('submit', newFormHandler); //To Do - fix this event listener
 
 document
   .querySelector('.project-list')
