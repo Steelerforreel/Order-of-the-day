@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('homepage');
 });
 
 router.get('/login', (req, res) => {
@@ -23,6 +23,32 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+
+
+
+router.get('/dashboard', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  // if (req.session.logged_in) {
+  //   res.redirect('/dashboard');
+  //   return;
+  // }
+
+  res.render('tasks');
+});
+
+
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  // if (req.session.logged_in) {
+  //   res.redirect('/profile');
+  //   return;
+  // }
+
+  res.render('signup');
+});
+
+
 
 // Task dashboard route
 router.get("/tasks", withAuth, async (req, res) => {

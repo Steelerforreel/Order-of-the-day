@@ -7,8 +7,27 @@
       <a href="/tasks/{{task.id}}">{{task.name}}</a>
     </h2>
     <p>{{task.description}}</p>
-    <p>{{format_date task.starting_time}}</p>
-    <p>{{format_date task.ending_time}}</p>
+    <p>{{task.starting_time}}</p>
+    <p>{{task.ending_time}}</p>
   </div>
 </div>
 {{/each}}
+
+{{#if Tasks.length}}
+    <div class="col-md-6 Task-list ">
+      <h3>Current Tasks:</h3>
+
+        {{#each Tasks as |Task|}}
+        <div class="row mb-2"  id="del-task" >
+          <div class="col-md-8">
+          <h4><a href="/Task/{{Task.id}}">{{Task.name}}</a></h4>
+          </div>
+            <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{Task.id}}">DELETE</button>
+            </div>
+          </div>
+          {{/each}}
+    </div>
+  {{/if}}
+
+  {{!-- <script src="js/dashboard.js"></script> --}}

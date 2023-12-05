@@ -2,6 +2,21 @@ const router = require("express").Router();
 const { Tasks } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+
+
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newTask = await Tasks.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(newTask);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // Add Tasks Route
 router.get("/add", withAuth, (req, res) => {
   // Render the page for adding a new Tasks

@@ -2,10 +2,8 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
-  console.log("hit / endpoint");
   try {
     const userDataOld = await User.findOne({ where: { email: req.body.email } });
-    console.log("user data old", userDataOld);
     if (userDataOld) {
       res
         .status(400)
@@ -13,7 +11,6 @@ router.post('/', async (req, res) => {
       return;
     }
     const userData = await User.create(req.body);
-    console.log("post create");
 
     req.session.save(() => {
       req.session.user_id = userData.id;
