@@ -24,7 +24,7 @@ Tasks.init(
     //   defaultValue: DataTypes.NOW,
     // },
     starting_time: {
-      type: DataTypes.TIME,  //not sure if TIME datatype exists, I know DATE exists
+      type: DataTypes.TIME,  
       allowNull: false,
     },
     ending_time: {

@@ -1,4 +1,37 @@
-<div class="text-center">
+<!-- Loop over each object in the projects array -->
+{{#each tasks as |task| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      <a href="/tasks/{{task.id}}">{{task.name}}</a>
+    </h2>
+    <p>{{task.description}}</p>
+    <p>{{task.starting_time}}</p>
+    <p>{{task.ending_time}}</p>
+  </div>
+</div>
+{{/each}}
+
+{{#if Tasks.length}}
+    <div class="col-md-6 Task-list ">
+      <h3>Current Tasks:</h3>
+
+        {{#each Tasks as |Task|}}
+        <div class="row mb-2"  id="del-task" >
+          <div class="col-md-8">
+          <h4><a href="/Task/{{Task.id}}">{{Task.name}}</a></h4>
+          </div>
+            <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{Task.id}}">DELETE</button>
+            </div>
+          </div>
+          {{/each}}
+    </div>
+  {{/if}}
+
+  <script src="js/tasks.js"></script>
+{{!-- <div class="text-center">
   <h2>{{name}}</h2>
   <p>{{description}}</p>
   <p>Created by {{user.name}} on {{date_created}}</p>
@@ -20,4 +53,4 @@
   <p>
     <button class="btn btn-primary">Fund this Project!</button>
   </p>
-</div>
+</div> --}}

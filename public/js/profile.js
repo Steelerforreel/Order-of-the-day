@@ -1,29 +1,28 @@
 const newFormHandler = async (event) => {
+  console.log("new form handler");
   event.preventDefault();
 
-  const name = document.querySelector('#task-name').value.trim();
+  const title = document.querySelector('#task-name').value.trim();
   const description = document.querySelector('#task-desc').value.trim();
   const starting_time = document.querySelector('#starting_time').value.trim();
   const ending_time = document.querySelector('#ending_time').value.trim();
-
-  if (name && description && starting_time && ending_time) {
+console.log({title, description,starting_time,ending_time});
+  if (title && description && starting_time && ending_time) {
     const response = await fetch(`/api/tasks`, {
       method: 'POST',
-      body: JSON.stringify({ name, description, starting_time, ending_time }),
+      body: JSON.stringify({ title, description, starting_time, ending_time }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/tasks');
     } else {
       alert('Failed to create task');
     }
   }
 };
-
-
 
 document
   .querySelector('.new-Task-form')

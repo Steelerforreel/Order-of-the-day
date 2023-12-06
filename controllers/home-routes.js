@@ -27,15 +27,10 @@ router.get('/login', (req, res) => {
 
 
 
-router.get('/dashboard', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  // if (req.session.logged_in) {
-  //   res.redirect('/dashboard');
-  //   return;
-  // }
+// router.get('/dashboard', (req, res) => {
 
-  res.render('tasks');
-});
+//   res.render('dashboard');
+// });
 
 
 router.get('/signup', (req, res) => {
@@ -51,21 +46,58 @@ router.get('/signup', (req, res) => {
 
 
 // Task dashboard route
-router.get("/tasks", withAuth, async (req, res) => {
+// router.get("/dashboard", withAuth, async (req, res) => {
+//   try {
+//     // Retrieve tasks associated with the logged-in user
+//     const dbTaskData = await Tasks.findAll({
+//       where: {
+//         user_id: req.session.user_id,
+//       },
+//       attributes: ["id", "title", "description", "starting_time", "ending_time"],
+//     });
+
+//     // Serialize data before passing to the template
+//     const tasks = dbTaskData.map((task) => task.get({ plain: true }));
+// console.log({tasks});
+//     // Render the dashboard template with tasks data
+//     res.render("dashboard", { tasks, loggedIn: true });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
+
+router.post('/tasks', withAuth, async (req, res) => {
+  console.log("router.post tasks");
+    try {
+      const newTask = await Tasks.create({
+        ...req.body,
+        user_id: req.session.user_id,
+      });
+  
+      res.status(200).json(newTask);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
+
+router.get("/tasks",withAuth, async (req, res) => {
+  let dbTaskData = [];
+  console.log({userid: req.session.user_id});
   try {
     // Retrieve tasks associated with the logged-in user
-    const dbTaskData = await Tasks.findAll({
+     dbTaskData = await Tasks.findAll({
       where: {
         user_id: req.session.user_id,
       },
-      attributes: ["id", "title", "description", "startTime", "endTime"],
+      attributes: ["id", "title", "description", "starting_time", "ending_time"],
     });
-
+console.log({dbTaskData});
     // Serialize data before passing to the template
     const tasks = dbTaskData.map((task) => task.get({ plain: true }));
-
+console.log({tasks});
     // Render the dashboard template with tasks data
-    res.render("dashboard", { tasks, loggedIn: true });
+    res.render("tasks", { tasks, loggedIn: true });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal Server Error" });

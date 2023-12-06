@@ -15,4 +15,5 @@ const delButtonHandler = async (event) => {
     }
   };
 
-  document.querySelector('#del-task').addEventListener("click", delButtonHandler);
+  // const deltask=document.getElementById('del-task');
+  // deltask.addEventListener("click", delButtonHandler);

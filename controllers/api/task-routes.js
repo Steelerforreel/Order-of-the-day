@@ -5,6 +5,7 @@ const withAuth = require("../../utils/auth");
 
 
 router.post('/', withAuth, async (req, res) => {
+console.log("router.post tasks");
   try {
     const newTask = await Tasks.create({
       ...req.body,
@@ -17,36 +18,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// Add Tasks Route
-router.get("/add", withAuth, (req, res) => {
-  // Render the page for adding a new Tasks
-  res.render("add-Tasks", { loggedIn: true });
-});
 
-// Edit Tasks Route
-router.get("/edit/:id", withAuth, async (req, res) => {
-  try {
-    // Retrieve the Tasks data based on the Tasks ID
-    const dbTasksData = await Tasks.findByPk(req.params.id, {
-      attributes: ["id", "title", "description", "startTime", "endTime"],
-    });
-
-    // If the Tasks is not found, return an error
-    if (!dbTasksData) {
-      res.status(404).json({ message: "Tasks not found" });
-      return;
-    }
-
-    // Serialize data before passing to the template
-    const Tasks = dbTasksData.get({ plain: true });
-
-    // Render the edit-Tasks template with the Tasks data
-    res.render("edit-Tasks", { Tasks, loggedIn: true });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
 
 // Delete Tasks Route
 router.delete("/delete/:id", withAuth, async (req, res) => {
@@ -71,3 +43,29 @@ router.delete("/delete/:id", withAuth, async (req, res) => {
 });
 
 module.exports = router;
+
+
+// Edit Tasks Route
+// router.get("/edit/:id", withAuth, async (req, res) => {
+//   try {
+//     // Retrieve the Tasks data based on the Tasks ID
+//     const dbTasksData = await Tasks.findByPk(req.params.id, {
+//       attributes: ["id", "title", "description", "startTime", "endTime"],
+//     });
+
+//     // If the Tasks is not found, return an error
+//     if (!dbTasksData) {
+//       res.status(404).json({ message: "Tasks not found" });
+//       return;
+//     }
+
+//     // Serialize data before passing to the template
+//     const Tasks = dbTasksData.get({ plain: true });
+
+//     // Render the edit-Tasks template with the Tasks data
+//     res.render("edit-Tasks", { Tasks, loggedIn: true });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });

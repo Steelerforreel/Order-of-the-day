@@ -15,7 +15,7 @@ const seedDatabase = async () => {
   for (const task of taskData) {
     await Tasks.create({
       ...task,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      // user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
 
