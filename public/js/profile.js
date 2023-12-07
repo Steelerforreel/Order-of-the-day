@@ -1,46 +1,30 @@
 const newFormHandler = async (event) => {
+  console.log("new form handler");
   event.preventDefault();
 
-  const name = document.querySelector('#task-name').value.trim();
-  const description = document.querySelector('#task-desc').value.trim();
-
-  if (name && description) {
+  const title = document.querySelector("#task-name").value.trim();
+  const description = document.querySelector("#task-desc").value.trim();
+  const starting_time = document.querySelector("#starting_time").value.trim();
+  const ending_time = document.querySelector("#ending_time").value.trim();
+  const has_Completed = document.querySelector('#has_completed:checked') ? true : false;
+ 
+  if (title && description && starting_time && ending_time && has_Completed) {
     const response = await fetch(`/api/tasks`, {
-      method: 'POST',
-      body: JSON.stringify({ name, description }),
+      method: "POST",
+      body: JSON.stringify({ title, description, starting_time, ending_time, has_Completed }),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace("/tasks");
     } else {
-      alert('Failed to create task');
-    }
-  }
-};
-
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/tasks/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to delete task');
+      alert("Failed to create task");
     }
   }
 };
 
 document
-  .querySelector('.new-task-form')
-  .addEventListener('submit', newFormHandler);
-
-document
-  .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
+  .querySelector(".new-Task-form")
+  .addEventListener("submit", newFormHandler);

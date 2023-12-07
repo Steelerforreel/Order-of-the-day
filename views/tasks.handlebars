@@ -1,24 +1,51 @@
-<div class="text-center">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./public/css/output.css"/>
+
+<!-- Loop over each object in the projects array -->
+{{#if tasks.length}}
+{{#each tasks as |task| }}
+<div class="row mb-4 project overflow-hidden flex items-center justify-center m-0">
+  <div class="col-md-5 bg-gradient-to-r from-amber-600 to-amber-300 lg:w-6/12 md:7/12 w-8/12 shadow-3xl rounded-xl pt-1">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      <a href="/tasks/{{task.id}}" class = "text-2xl ml-5">{{task.title}}</a>
+    </h2>
+    <p class = "bg-gray-200 rounded pl-12 py-2 md:py-4 focus:outline-none w-full">📋 {{task.description}}</p>
+    <p class = "bg-gray-200 rounded pl-12 py-2 md:py-4 focus:outline-none w-full">🕐 {{task.starting_time}} to {{task.ending_time}}</p>
+  </div>
+</div>
+{{/each}}
+{{/if}}
+
+<link rel="stylesheet" href="./public/css/output.css"/>
+
+    {{!-- <div class="col-md-6 Task-list ">
+      <h3>Current Tasks:</h3>
+
+        {{#each Tasks as |Task|}}
+        <div class="row mb-2"  id="del-task" >
+          <div class="col-md-8">
+          <h4><a href="/Task/{{Task.id}}">{{Task.name}}</a></h4>
+          </div>
+            <div class="col-md-4">
+           
+            </div>
+          </div>
+          {{/each}}
+    </div> --}}
+{{!-- <div class="text-center">
   <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
   <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount needed_funding}}</span>
-    needed
-  </p>
+  <p>Created by {{user.name}} on {{date_created}}</p>
 
    <main class="flex flex-wrap justify-center">
         <div><header class = "text-5xl bg-amber-300 text-center mx-5 my-5 p-4 border-double border-4">Tasks
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk<button class= "text-sm m-2 border-solid border-2 border-y-slate-950">✔️</button><button class = "text-sm m-2 border-solid border-2 border-y-slate-950">🗑️</button></ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk<button class= "text-sm m-2 border-solid border-2 border-y-slate-950">✔️</button><button class = "text-sm m-2 border-solid border-2 border-y-slate-950">🗑️</button></ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk<button class= "text-sm m-2 border-solid border-2 border-y-slate-950">✔️</button><button class = "text-sm m-2 border-solid border-2 border-y-slate-950">🗑️</button></ul>
+            <ul class = "text-lg my-2">{{name}}<button class= "text-sm m-2 border-solid border-2 border-y-slate-950">✔️</button><button class = "text-sm m-2 border-solid border-2 border-y-slate-950">🗑️</button></ul>
+        
         </div>
         <div><header class = "text-5xl bg-green-500 text-center mx-5 my-5 p-4 border-double border-4">Completed Tasks
             <ul class = "text-lg my-2">bgfrnrsjdkblntjrk</ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk</ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk</ul>
+        
         </div>
         <div class = "text-center text-4xl mx-5 my-5 p-4 border-double border-4 bg-red-600">Money Spent
             <ul class = "text-3xl">$</ul>
@@ -28,4 +55,4 @@
   <p>
     <button class="btn btn-primary">Fund this Project!</button>
   </p>
-</div>
+</div> --}}

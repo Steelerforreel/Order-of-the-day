@@ -4,6 +4,7 @@
     "description": "Write and finalize the project proposal document.",
     "starting_time": "09:00:00",
     "ending_time": "11:00:00",
+    "has_completed": false,
     "user_id": 1
   },
   {
@@ -11,6 +12,7 @@
     "description": "Discuss project requirements and expectations with the client.",
     "starting_time": "14:00:00",
     "ending_time": "16:00:00",
+    "has_completed": false,
     "user_id": 2
   },
   {
@@ -18,6 +20,7 @@
     "description": "Review and provide feedback on the team's codebase.",
     "starting_time": "10:30:00",
     "ending_time": "12:30:00",
+    "has_completed": false,
     "user_id": 1
   },
   {
@@ -25,6 +28,7 @@
     "description": "Prepare slides for the upcoming project presentation.",
     "starting_time": "13:30:00",
     "ending_time": "15:30:00",
+    "has_completed": false,
     "user_id": 2
   }
 ]

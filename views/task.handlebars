@@ -1,0 +1,61 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./public/css/output.css"/>
+
+<div class="row mb-4 project overflow-hidden flex items-center justify-center m-0">
+  <div class="col-md-5 bg-gradient-to-r from-amber-600 to-amber-300 lg:w-6/12 md:7/12 w-8/12 shadow-3xl rounded-xl">
+    <h2 class = "flex text-2xl ml-5">
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{task.title}}
+    </h2>
+    <p class= "bg-gray-200 rounded pl-12 py-2 md:py-4 focus:outline-none w-full">{{task.description}}</p>
+    <p class= "bg-gray-200 rounded pl-12 py-2 md:py-4 focus:outline-none w-full">{{task.starting_time}}</p>
+    <p class= "bg-gray-200 rounded pl-12 py-2 md:py-4 focus:outline-none w-full">{{task.ending_time}}</p>
+    {{#if has_completed}}
+      <p class="has-completed">
+        Completed Task
+      </p>
+    {{/if}}
+  </div>
+       <button class="del-task btn btn-sm btn-danger bg-gradient-to-b from-gray-700 to-gray-900 font-medium ml-2 p-2 md:p-4 text-white uppercase  rounded" data-id="{{task.id}}">DELETE</button>
+</div>
+  <div class ="row mb-4 project overflow-hidden flex items-center justify-center m-0">
+  <div class="bg-gradient-to-r from-amber-600 to-amber-300 lg:w-6/12 md:7/12 w-8/12 shadow-3xl rounded-xl pt-1">
+    <h2 class = "flex text-4xl ml-5 text-center">
+      Update Task
+    </h2>
+    <form>
+      <label for="title" class = "flex text-2xl ml-5 mt-2">
+        Task Title:
+      </label>
+      <br />
+      <textarea class= "bg-gray-200 rounded pl-12 py-2 md:py-1 focus:outline-none w-full" id="title" name ="title" rows="2" cols="30">
+        {{task.title}}
+      </textarea>
+      <br />
+      <textarea class= "bg-gray-200 rounded pl-12 py-2 md:py-1 focus:outline-none w-full" id="description" name="description" rows="5" cols="30">
+        {{description}}
+      </textarea>
+      <textarea class= "bg-gray-200 rounded pl-12 py-2 md:py-1 focus:outline-none w-full" id="starting_time" name="starting_time" rows="5" cols="30">
+        {{starting_time}}
+      </textarea>
+      <br />
+      <textarea class= "bg-gray-200 rounded pl-12 py-2 md:py-1 focus:outline-none w-full" id="ending_time" name="ending_time" rows="5" cols="30">
+        {{ending_time}}
+      </textarea>
+      <br />
+      <br />
+      <input type="checkbox" id="has_completed" name="has_completed" value="true" />
+      <label for="has_completed">
+        Check box if this task is completed
+      </label>
+      <br />
+      <button class="edit-task-form bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase rounded object-center" type="submit" value="Submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<script src="/js/task.js"></script> 
+<link rel="stylesheet" href="./public/css/output.css"/>

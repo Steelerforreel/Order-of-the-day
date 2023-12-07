@@ -23,14 +23,17 @@ Tasks.init(
     //   allowNull: false,
     //   defaultValue: DataTypes.NOW,
     // },
-    // starting_time: {
-    //   type: DataTypes.TIME,  //not sure if TIME datatype exists, I know DATE exists
-    //   allowNull: false,
-    // },
-    // ending_time: {
-    //   type: DataTypes.TIME,
-    //   allowNull: false,
-    // },
+    starting_time: {
+      type: DataTypes.TIME,  
+      allowNull: false,
+    },
+    ending_time: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+    has_nuts: {
+      type: DataTypes.BOOLEAN,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

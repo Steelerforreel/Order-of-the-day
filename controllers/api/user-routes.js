@@ -1,56 +1,62 @@
-const router = require("express").Router();
-const { User } = require("../../models");
-const bcrypt = require("bcrypt");
-const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const { User } = require('../../models');
 
-/// Login route
-router.post("/login", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const userDataOld = await User.findOne({ where: { email: req.body.email } });
+    if (userDataOld) {
+      res
+        .status(400)
+        .json({ message: 'User with that email already exists' });
+      return;
+    }
+    const userData = await User.create(req.body);
 
-    const user = await User.findOne({ where: { email } });
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
 
-    if (!user || !user.checkPassword(password)) {
-      res.status(400).json({ message: "Incorrect email or password" });
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
     req.session.save(() => {
-      req.session.user_id = user.id;
+      req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.json({ user, message: "Logged in successfully" });
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
     });
+
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(400).json(err);
   }
 });
 
-// Signup route
-router.post("/signup", async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-
-    const user = await User.create({
-      username,
-      email,
-      password: hashedPassword,
-    });
-
-    req.session.save(() => {
-      req.session.user_id = user.id;
-      req.session.logged_in = true;
-      res.json({ user, message: "Signed up and logged in successfully" });
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
-// Logout
-router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });

@@ -4,61 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Order of the Day</title>
+  <link rel="stylesheet" href="./public/css/output.css"/>
+  <title>Order of the day</title>
+  {{!-- <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css"> --}}
 </head>
-
 <body class="bg-cyan-950 bg-gradient-to-r from-amber-500">
   <div class="flex-column">
-    <header class="justify-space-around box-border display-flex text-center p-2">
-      <h1 class = "text-8xl p-5" href="/">🕘Order of the Day💵
-      </h1>
-      <nav>
+    <header class="justify-space-around box-border display-flex text-center p-2 bg-gradient-to-b from-rose-600">
+      <h1 class = "text-8xl p-5" href="/">🕘Order of the Day💵</h1>
+    <nav>
+        <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/task">My Tasks</a> |
-        <button class="" id="logout">Logout</button>
-        {{else}}
-
-        {{{ body }}}
-        {{/if}}
-      </body>
-    </header>
-        {{ body }}
-        <a href="/login">Login</a>
+        <a href="/profile" class="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 text-white w-full rounded">Profile</a> |
+        <a href="/tasks" class="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 text-white w-full rounded">Tasks</a> |
+        <button class="no-button bg-gradient-to-b from-violet-700 to-gray-900 font-medium p-2 text-white rounded" id="logout">Logout</button>
         {{/if}}
       </nav>
-      <div class= "text-5xl">Date:</div>
     </header>
-    <main class="flex flex-wrap justify-center">
-        <div><header class = "text-5xl bg-amber-300 text-center mx-5 my-5 p-4 border-double border-4">Tasks
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk<button class= "text-sm m-2 border-solid border-2 border-y-slate-950">✔️</button><button class = "text-sm m-2 border-solid border-2 border-y-slate-950">🗑️</button></ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk<button class= "text-sm m-2 border-solid border-2 border-y-slate-950">✔️</button><button class = "text-sm m-2 border-solid border-2 border-y-slate-950">🗑️</button></ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk<button class= "text-sm m-2 border-solid border-2 border-y-slate-950">✔️</button><button class = "text-sm m-2 border-solid border-2 border-y-slate-950">🗑️</button></ul>
-        </div>
-        <div><header class = "text-5xl bg-green-500 text-center mx-5 my-5 p-4 border-double border-4">Completed Tasks
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk</ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk</ul>
-            <ul class = "text-lg my-2">bgfrnrsjdkblntjrk</ul>
-        </div>
-        <div class = "text-center text-4xl mx-5 my-5 p-4 border-double border-4 bg-red-600">Money Spent
-            <ul class = "text-3xl">$</ul>
-        </div>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
     </main>
     
     <footer>
       
     </footer>
-
   </div>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-
-  <script src="../../public/js/logout.js"></script>
-
+  {{!-- <script src="/js/profile.js"></script> --}}
   <script src="/js/logout.js"></script>
-
   {{/if}}
 </body>
+
 
 </html>
