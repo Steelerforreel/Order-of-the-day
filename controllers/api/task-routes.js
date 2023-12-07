@@ -44,6 +44,30 @@ router.delete("/delete/:id", withAuth, async (req, res) => {
 
 module.exports = router;
 
+//update route
+router.put('/:id', async (req,res) => {
+  try{
+    const task = await Tasks.update(
+      {
+        title: req.body.title,
+        description: req.body.description,
+        starting_time: req.body.starting_time,
+        ending_time: req.body.ending_time,
+        has_completed: req.body.has_completed
+      },
+      {
+      where: {
+        id: req.params.id,
+      },
+
+    });
+    if(task)
+    res.render('tasks');
+  } catch(err) {
+    res.status(500).json(err);
+  };
+  
+});
 
 // Edit Tasks Route
 // router.get("/edit/:id", withAuth, async (req, res) => {

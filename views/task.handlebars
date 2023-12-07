@@ -7,8 +7,52 @@
     <p>{{task.description}}</p>
     <p>{{task.starting_time}}</p>
     <p>{{task.ending_time}}</p>
+    {{#if has_completed}}
+      <p class="has-completed">
+        Completed Task
+      </p>
+    {{/if}}
   </div>
        <button class="del-task btn btn-sm btn-danger" data-id="{{task.id}}">DELETE</button>
 </div>
+
+<div>
+  <h2>
+    Update Task
+  </h2>
+  <form>
+    <label for="title">
+      Task Title:
+    </label>
+    <br />
+    <textarea id="title" name ="title" rows="2" cols="30">
+      {{task.title}}
+    </textarea>
+    <br />
+    <textarea id="description" name="description" rows="5" cols="30">
+      {{description}}
+    </textarea>
+    <textarea id="starting_time" name="starting_time" rows="5" cols="30">
+      {{starting_time}}
+    </textarea>
+    <br />
+    <textarea id="ending_time" name="ending_time" rows="5" cols="30">
+      {{ending_time}}
+    </textarea>
+    <br />
+    <br />
+    <input type="checkbox" id="has_completed" name="has_completed" value="true" />
+    <label for="has_completed">
+      Check box if this task is completed
+    </label>
+    <br />
+    <button class="edit-task-form" type="submit" value="Submit">
+      Submit
+    </button>
+  </form>
+</div>
+
+
+
 <script src="/js/task.js"></script> 
 <link rel="stylesheet" href="./public/css/output.css"/>
