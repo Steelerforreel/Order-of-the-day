@@ -8,8 +8,8 @@
 - [Unique and Novel Idea](#unique-and-novel-idea)
 - [User Story and Motivation](#user-story-and-motivation)
 - [Challenges and Successes](#challenges-and-successes)
-- [Demo](#demo)
 - [Directions for Future Development](#directions-for-future-development)
+- [Demo](#demo)
 - [Links](#links)
 
 ## Overview
