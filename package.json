@@ -1,12 +1,13 @@
 {
-    "name": "crowd-funding",
+    "name": "taskmanager",
     "version": "1.0.0",
     "description": "",
     "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js",
-        "seed": "node seeds/seed.js"
+        "seed": "node seeds/seed.js",
+        "tailwind": "npx tailwindcss -i ./public/css/style.css -o ./build/css/style.css --watch"
     },
     "keywords": [],
     "author": "",
@@ -21,5 +22,10 @@
         "mysql2": "^2.2.5",
         "node-cron": "^3.0.3",
         "sequelize": "^6.3.5"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.3.6"
     }
 }
+
+
