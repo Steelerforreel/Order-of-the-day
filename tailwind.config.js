@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: ["./public/**/*.{html,js}"],
+  content: ["./views/layouts/main.handlebars", "./views/homepage.handlebars", "./views/login.handlebars", "./views/profile.handlebars", "./views/signup.handlebars", "./views/task.handlebars", "./views/tasks.handlebars"],
     theme: {
       colors: {
         transparent: 'transparent',
