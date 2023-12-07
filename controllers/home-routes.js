@@ -116,9 +116,9 @@ router.get('/tasks/:id', async (req, res) => {
     });
 
     const task = taskData.get({ plain: true });
-
-    res.render('tasks', {
-      ...task,
+console.table(task);
+    res.render('task', {
+      task,
       logged_in: req.session.logged_in
     });
   } catch (err) {
