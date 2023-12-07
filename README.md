@@ -37,7 +37,7 @@
 2. Navigate to the project's root directory in the terminal.
 3. Run `npm install` to install the required dependencies.
 4. Set up your MySQL database and update the `.env` file with your database name, username, and password.
-5. Start the application:npm start
+5. Start the application:`npm start`
 6. Open your browser and navigate to http://localhost:3001
 
 ## Usage
