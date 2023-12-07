@@ -46,8 +46,9 @@ module.exports = router;
 
 //update route
 router.put('/:id', async (req,res) => {
-  try{
-    const task = await Tasks.update(
+    try{
+      const TasksId = req.params.id;
+      const task = await Tasks.update(
       {
         title: req.body.title,
         description: req.body.description,
@@ -57,17 +58,17 @@ router.put('/:id', async (req,res) => {
       },
       {
       where: {
-        id: req.params.id,
+        id: TasksId,
       },
 
     });
-    if(task)
-    res.render('tasks');
-  } catch(err) {
+    // await task.save();
+    res.status(200).json(dish);
+  } catch (err) {
     res.status(500).json(err);
-  };
+  }
   
-});
+  });
 
 // Edit Tasks Route
 // router.get("/edit/:id", withAuth, async (req, res) => {

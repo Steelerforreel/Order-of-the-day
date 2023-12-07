@@ -21,7 +21,7 @@ action.addEventListener("click", delButtonHandler);
 
 async function editFormHandler(event) {
   event.preventDefault();
-  const dish_name = document.querySelector('#title').value;
+  const title = document.querySelector('#title').value;
   const description = document.querySelector('#description').value;
   const starting_time = document.querySelector('#starting_time').value;
   const ending_time = document.querySelector('#ending_time').value;
