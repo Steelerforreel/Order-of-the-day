@@ -5,6 +5,8 @@
 - [Overview](#overview)
 - [Project Description](#project-description)
 - [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
 - [Unique and Novel Idea](#unique-and-novel-idea)
 - [User Story and Motivation](#user-story-and-motivation)
 - [Challenges and Successes](#challenges-and-successes)
@@ -28,6 +30,24 @@
 - **CSS Tailwind:** A utility-first CSS framework used to design a responsive and clean user interface.
 - **Authentication:** Implemented using express-session and cookies.
 - **Heroku Deployment:** The application is deployed on Heroku with live data.
+
+## Installation
+
+1. Clone the repository.
+2. Navigate to the project's root directory in the terminal.
+3. Run `npm install` to install the required dependencies.
+4. Set up your MySQL database and update the `.env` file with your database name, username, and password.
+5. Start the application:npm start
+6. Open your browser and navigate to http://localhost:3001
+
+## Usage
+
+Once the application is installed and running, follow these steps to use "Order of the Day":
+
+1. Create an account or log in if you already have one.
+2. Explore the intuitive interface to schedule tasks, events, and priorities.
+3. Take advantage of the collaborative features to enhance your daily organization.
+4. Enjoy the seamless experience of managing your day efficiently.
 
 ## Unique and Novel Idea
 
