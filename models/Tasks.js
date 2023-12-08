@@ -31,7 +31,7 @@ Tasks.init(
       type: DataTypes.TIME,
       allowNull: false,
     },
-    has_nuts: {
+    has_completed: {
       type: DataTypes.BOOLEAN,
     },
     user_id: {

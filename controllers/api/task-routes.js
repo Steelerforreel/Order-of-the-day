@@ -45,16 +45,14 @@ router.delete("/delete/:id", withAuth, async (req, res) => {
 module.exports = router;
 
 //update route
-router.put('/:id', async (req,res) => {
+router.put('/update/:id', async (req,res) => {
     try{
+      
       const TasksId = req.params.id;
       const task = await Tasks.update(
       {
-        title: req.body.title,
-        description: req.body.description,
-        starting_time: req.body.starting_time,
-        ending_time: req.body.ending_time,
-        has_completed: req.body.has_completed
+       ...req.body,
+        user_id: req.session.user_id,
       },
       {
       where: {
@@ -62,35 +60,11 @@ router.put('/:id', async (req,res) => {
       },
 
     });
+    console.log("update post",req.body);
     // await task.save();
-    res.status(200).json(dish);
+    res.render('task',{ task, loggedIn: true });
   } catch (err) {
     res.status(500).json(err);
   }
   
   });
-
-// Edit Tasks Route
-// router.get("/edit/:id", withAuth, async (req, res) => {
-//   try {
-//     // Retrieve the Tasks data based on the Tasks ID
-//     const dbTasksData = await Tasks.findByPk(req.params.id, {
-//       attributes: ["id", "title", "description", "startTime", "endTime"],
-//     });
-
-//     // If the Tasks is not found, return an error
-//     if (!dbTasksData) {
-//       res.status(404).json({ message: "Tasks not found" });
-//       return;
-//     }
-
-//     // Serialize data before passing to the template
-//     const Tasks = dbTasksData.get({ plain: true });
-
-//     // Render the edit-Tasks template with the Tasks data
-//     res.render("edit-Tasks", { Tasks, loggedIn: true });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
