@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./public/css/output.css"/>
   <title>Order of the day</title>
-  {{!-- <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css"> --}}
 </head>
 <body class="bg-cyan-950 bg-gradient-to-r from-amber-500">
   <div class="flex-column">
@@ -26,18 +24,11 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    
-    <footer>
-      
-    </footer>
   </div>
-
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   {{!-- <script src="/js/profile.js"></script> --}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
-
-
 </html>

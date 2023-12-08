@@ -7,7 +7,7 @@ const helpers = require('./utils/helpers');
 const process = require("process");
 const fs = require("fs");
 const os = require("os");
-const cron = require("node-cron");
+const cron = require("node-cron"); //new 
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -30,6 +30,7 @@ cron.schedule("*/15 * * * * *", function () {
     console.log("server details logged!");
   });
 });
+
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
