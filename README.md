@@ -26,9 +26,11 @@
 
 - **Node.js and Express.js:** Backend for creating a RESTful API.
 - **Handlebars.js:** Template engine for the MVC paradigm.
+- **node-cron:** Scheduled task execution for automating certain processes.
 - **MySQL and Sequelize ORM:** Database management for storing user data.
 - **CSS Tailwind:** A utility-first CSS framework used to design a responsive and clean user interface.
 - **Authentication:** Implemented using express-session and cookies.
+- **node-cron:** npm package helps in scheduling tasks.
 - **Heroku Deployment:** The application is deployed on Heroku with live data.
 
 ## Installation
@@ -73,9 +75,9 @@ Looking ahead, our vision for "Order of the Day" includes expanding its capabili
 
 ## Demo
 
-[Link to Walkthrough Video]()
+[Link to Walkthrough Video](https://drive.google.com/file/d/1dcULzoaInIgH0c8tbQ9E-YTrWwbBXfUF/view)
 
 ## Links
 
-- **Deployed Application:** [Heroku URL]
+- **Deployed Application:** [https://serene-journey-98966-ef4d4e7d5bd1.herokuapp.com/]
 - **GitHub Repository:** [https://github.com/Steelerforreel/Order-of-the-day/tree/main]

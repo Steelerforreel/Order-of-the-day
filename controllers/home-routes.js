@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Tasks, User } = require("../models");
 const withAuth = require("../utils/auth");
-const taskRoutes = require("./api/task-routes"); // Import task routes
+const taskRoutes = require("./api/task-routes"); 
 
 // Home route
 router.get('/', (req, res) => {
@@ -24,15 +24,6 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-
-
-
-// router.get('/dashboard', (req, res) => {
-
-//   res.render('dashboard');
-// });
-
-
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   // if (req.session.logged_in) {
@@ -42,44 +33,6 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
-
-
-
-// Task dashboard route
-// router.get("/dashboard", withAuth, async (req, res) => {
-//   try {
-//     // Retrieve tasks associated with the logged-in user
-//     const dbTaskData = await Tasks.findAll({
-//       where: {
-//         user_id: req.session.user_id,
-//       },
-//       attributes: ["id", "title", "description", "starting_time", "ending_time"],
-//     });
-
-//     // Serialize data before passing to the template
-//     const tasks = dbTaskData.map((task) => task.get({ plain: true }));
-// console.log({tasks});
-//     // Render the dashboard template with tasks data
-//     res.render("dashboard", { tasks, loggedIn: true });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-router.post('/tasks', withAuth, async (req, res) => {
-  console.log("router.post tasks");
-    try {
-      const newTask = await Tasks.create({
-        ...req.body,
-        user_id: req.session.user_id,
-      });
-  
-      res.status(200).json(newTask);
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
 
 router.get("/tasks",withAuth, async (req, res) => {
   let dbTaskData = [];
@@ -91,19 +44,28 @@ router.get("/tasks",withAuth, async (req, res) => {
         user_id: req.session.user_id,
       },
       attributes: ["id", "title", "description", "starting_time", "ending_time"],
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
 console.log({dbTaskData});
     // Serialize data before passing to the template
     const tasks = dbTaskData.map((task) => task.get({ plain: true }));
 console.log({tasks});
     // Render the dashboard template with tasks data
-    res.render("tasks", { tasks, loggedIn: true });
+    res.render('tasks', {
+      tasks,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
+//render individual tasks
 router.get('/tasks/:id', async (req, res) => {
   try {
     const taskData = await Tasks.findByPk(req.params.id, {
@@ -144,8 +106,5 @@ router.get('/profile', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// Use task routes under /dashboard
-// router.use("/dashboard", taskRoutes);
 
 module.exports = router;
